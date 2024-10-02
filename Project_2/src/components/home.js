@@ -1,5 +1,8 @@
 import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import React from "react";
 
 function Home() {
     const navigate = useNavigate();
@@ -10,11 +13,16 @@ function Home() {
         navigate('/')
     }
     return (
-        <div>
-            <h2>Home Page</h2>
-            <p>Welcome to the home page!</p>
-
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={logout}>Logout</button>
+        <div className="home-container">
+            <div className="banner">
+                <h2>The Better Wish List</h2>
+                <p>Add gifts from any website</p>
+                <Link to="/login" className='get-started-btn'>Get Started</Link>
+                
+            </div>
+         {/*  <div className="logout-section">
+                <button className="logout-btn" onClick={logout}>Logout</button> 
+          </div> */}
         </div>
     );
 }

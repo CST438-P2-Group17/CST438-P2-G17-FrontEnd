@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter} from 'react-router-dom';
 import './navbar.css'
-
+import './home.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
