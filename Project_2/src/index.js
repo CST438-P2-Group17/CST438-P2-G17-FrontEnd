@@ -7,7 +7,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter} from 'react-router-dom';
 import './navbar.css'
 import './home.css'
-
+import './login.css'
+import './about.css'
+import './giftcard.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

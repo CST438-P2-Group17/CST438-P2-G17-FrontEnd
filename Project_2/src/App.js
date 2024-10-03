@@ -6,6 +6,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./components/home";
 import Login from "./components/login";
+import About from "./components/about";
+import GiftCardList from "./components/giftcardlist";
 
 /*import './App.css';
 import Login from "./components/login.js"
@@ -34,8 +36,8 @@ function App(){
           <Route path="/" element={<Home />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/createalist" element={<div>Create a List Page</div>} />
-          <Route path="/giftcards" element={<div>Gift Cards Page</div>} />
-          <Route path="/about" element={<div>About Page</div>} />
+          <Route path="/giftcards" element={<GiftCardList />} />
+          <Route path="/about" element={<About />} />
 
         </Routes>
     </div>

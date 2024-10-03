@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
     const navigate = useNavigate();
     return (
-        <div class="flex justify-center items-center h-screen bg-indigo-600">
+        <div class="flex justify-center items-center h-screen bg-slate-300">
             <div class="w-96 p-6 shadow-lg bg-white rounded-md">
                 <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i> Login using Google</h1>
                 <hr class="mt-3"></hr>
