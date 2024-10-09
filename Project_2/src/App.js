@@ -6,13 +6,15 @@ import React from "react";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./components/home";
 import Login from "./components/login";
+import UserProfile from "./components/userProfile";
 import About from "./components/about";
 import GiftCardList from "./components/giftcardlist";
+import { useState, useEffect } from 'react';
+
 
 /*import './App.css';
 import Login from "./components/login.js"
 import Home from "./components/home.js"
-import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -31,14 +33,14 @@ export default App;
 function App(){
   return (
     <div>
-      <Navbar />
+      <Navbar clientId="591552019563-hc7e24ispsfj464umknr2u428obj0fsh.apps.googleusercontent.com"/>
         <Routes>
-          <Route path="/" element={<Home />} /> 
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/" element={<Home />} />
           <Route path="/createalist" element={<div>Create a List Page</div>} />
           <Route path="/giftcards" element={<GiftCardList />} />
           <Route path="/about" element={<About />} />
-
+          <Route path="/userProfile" element={<UserProfile />} />
         </Routes>
     </div>
   );

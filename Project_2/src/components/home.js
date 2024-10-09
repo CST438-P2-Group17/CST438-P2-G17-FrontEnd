@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import React from "react";
 
-function Home() {
+function Home( {userData} ) {
     const navigate = useNavigate();
     
     const logout = () => {
