@@ -9,6 +9,7 @@ import Login from "./components/login";
 import UserProfile from "./components/userProfile";
 import About from "./components/about";
 import GiftCardList from "./components/giftcardlist";
+import CreateWishlist from "./components/createalist";
 import { useState, useEffect } from 'react';
 
 
@@ -37,7 +38,7 @@ function App(){
         <Routes>
           <Route path="/login" element={<Login />} /> 
           <Route path="/" element={<Home />} />
-          <Route path="/createalist" element={<div>Create a List Page</div>} />
+          <Route path="/createalist" element={<CreateWishlist/>} />
           <Route path="/giftcards" element={<GiftCardList />} />
           <Route path="/about" element={<About />} />
           <Route path="/userProfile" element={<UserProfile />} />
