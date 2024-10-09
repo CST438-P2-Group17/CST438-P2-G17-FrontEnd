@@ -8,6 +8,7 @@ import Home from "./components/home";
 import Login from "./components/login";
 import About from "./components/about";
 import GiftCardList from "./components/giftcardlist";
+import CreateWishlist from "./components/createalist";
 
 /*import './App.css';
 import Login from "./components/login.js"
@@ -35,7 +36,7 @@ function App(){
         <Routes>
           <Route path="/" element={<Home />} /> 
           <Route path="/login" element={<Login />} />
-          <Route path="/createalist" element={<div>Create a List Page</div>} />
+          <Route path="/createalist" element={<CreateWishlist/>} />
           <Route path="/giftcards" element={<GiftCardList />} />
           <Route path="/about" element={<About />} />
 
