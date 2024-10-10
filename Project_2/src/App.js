@@ -36,8 +36,8 @@ function App(){
     <div>
       <Navbar clientId="591552019563-hc7e24ispsfj464umknr2u428obj0fsh.apps.googleusercontent.com"/>
         <Routes>
-          <Route path="/login" element={<Login />} /> 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} /> 
+          <Route path="/home" element={<Home />} />
           <Route path="/createalist" element={<CreateWishlist/>} />
           <Route path="/giftcards" element={<GiftCardList />} />
           <Route path="/about" element={<About />} />
