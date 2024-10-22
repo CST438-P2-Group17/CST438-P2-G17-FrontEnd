@@ -11,6 +11,7 @@ import About from "./components/about";
 import GiftCardList from "./components/giftcardlist";
 import CreateWishlist from "./components/createalist";
 import Admin from "./components/admin";
+import ViewWishlists from "./components/viewWishListItems";
 import { useState, useEffect } from 'react';
 
 
@@ -40,6 +41,7 @@ function App(){
           <Route path="/" element={<Login />} /> 
           <Route path="/home" element={<Home />} />
           <Route path="/createalist" element={<CreateWishlist/>} />
+          <Route path="/viewWishListItems" element={<ViewWishlists/>} />
           <Route path="/giftcards" element={<GiftCardList />} />
           <Route path="/about" element={<About />} />
           <Route path="/userProfile" element={<UserProfile />} />
