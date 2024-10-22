@@ -34,6 +34,7 @@ export default function Navbar(){
     return <nav className="nav">
         <a href="/" className="wishListName">WishList</a>
         <ul>
+            <li><a href="/viewWishListItems">View Wishlists</a></li>
             <li><a href="/createalist">Create a Wish List</a></li>
             <li><a href="/giftcards">Gift Cards</a></li>
             <li><a href="/about">About</a></li>
