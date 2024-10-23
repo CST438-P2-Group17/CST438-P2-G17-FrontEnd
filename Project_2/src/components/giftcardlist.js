@@ -1,6 +1,6 @@
 
 import GiftCard from './giftcards';
-import React, {useState} from 'react';
+import React  from 'react';
 
 
 const giftCardData = [
@@ -108,10 +108,35 @@ const giftCardData = [
 ];
 
 
-const GiftCardList = () => {
-     const handleAddToList = (giftCardName) => {
-        console.log(`${giftCardName} added to the list.`);
-       
+const GiftCardList = ({ wishlistId }) => {
+    const handleAddToList = async (giftCardName) => {
+        console.log(`${giftCardName} added to the wishlist with ID: ${wishlistId}.`);
+
+        try {
+            const response = await fetch(`https://cst438p2g17spring-65b77ceaeba8.herokuapp.com/addWishlistedItem`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    wishlistId: parseInt(wishlistId),
+                    name: encodeURIComponent(giftCardName),
+                    price: 0,  // Price for gift cards could be dynamic or set to 0
+                    seller: encodeURIComponent('Gift Card Seller'),
+                    image_url: encodeURIComponent(`/images/${giftCardName}.png`)  // Assuming image paths follow a pattern
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
+            }
+
+            const data = await response.json();
+            console.log('Gift card added to wishlist successfully:', data);
+        } catch (error) {
+            console.error('Error adding gift card to wishlist:', error);
+        }
     };
 
     return (
@@ -127,6 +152,6 @@ const GiftCardList = () => {
             ))}
         </div>
     );
-}; 
+};
 
 export default GiftCardList;

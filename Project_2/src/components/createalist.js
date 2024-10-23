@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+
 
 function WishlistManager() {
   const [wishListName, setWishListName] = useState('')
