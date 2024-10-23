@@ -1,5 +1,7 @@
-import React from 'react';
+
 import GiftCard from './giftcards';
+import React, {useState} from 'react';
+
 
 const giftCardData = [
 
@@ -24,82 +26,82 @@ const giftCardData = [
         description: 'Listen to music or watch movies with an iTunes card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/netflix.jpg',
         name: 'Netflix Gift Card',
         description: 'Binge-watch your favorite shows on Netflix with this card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/spotify.png',
         name: 'Spotify Gift Card',
         description: 'Listen to unlimited music with a Spotify Premium card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/playstation.png',
         name: 'PlayStation Gift Card',
         description: 'Get games, movies, and more from the PlayStation Store.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/xbox.png',
         name: 'Xbox Gift Card',
         description: 'Unlock the latest games and add-ons on Xbox Live.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/uber.jpg',
         name: 'Uber Gift Card',
         description: 'Use this card to get rides or order food on Uber and Uber Eats.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/airbnb.jpg',
         name: 'Airbnb Gift Card',
         description: 'Travel or stay in unique homes with this Airbnb gift card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/nike.png',
         name: 'Nike Gift Card',
         description: 'Shop for the latest shoes and apparel at Nike stores.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/apple.png',
         name: 'Apple Gift Card',
         description: 'Get the latest Apple products, apps, and services with this card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/bestbuy.jpg',
         name: 'Best Buy Gift Card',
         description: 'Find electronics, appliances, and more with this Best Buy card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/sephorag.png',
         name: 'Sephora Gift Card',
         description: 'Shop beauty products, skincare, and fragrances with Sephora.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/targetg.jpg',
         name: 'Target Gift Card',
         description: 'Shop for essentials, clothes, and groceries at Target with this card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/disney.png',
         name: 'Disney Gift Card',
         description: 'Enjoy Disney theme parks, movies, and merchandise with this card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/homedepot.jpg',
         name: 'Home Depot Gift Card',
         description: 'Perfect for home improvement projects and tools at Home Depot.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/walmart.png',
         name: 'Walmart Gift Card',
         description: 'Shop for groceries, electronics, and more at Walmart.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/fandango.png',
         name: 'Fandango Gift Card',
         description: 'Get movie tickets and stream new releases with a Fandango card.',
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: '/doordash.jpg',
         name: 'DoorDash Gift Card',
         description: 'Order food from your favorite local restaurants with DoorDash.',
     }
@@ -107,7 +109,7 @@ const giftCardData = [
 
 
 const GiftCardList = () => {
-    const handleAddToList = (giftCardName) => {
+     const handleAddToList = (giftCardName) => {
         console.log(`${giftCardName} added to the list.`);
        
     };
@@ -125,5 +127,6 @@ const GiftCardList = () => {
             ))}
         </div>
     );
-};
+}; 
+
 export default GiftCardList;
