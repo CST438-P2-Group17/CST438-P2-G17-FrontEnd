@@ -28,11 +28,11 @@ export default function Navbar(){
     const handleLogout = () => {
         googleLogout();
         localStorage.setItem('userData', null);
-        navigate('/login');
+        navigate('/');
       };
 
     return <nav className="nav">
-        <a href="/" className="wishListName">WishList</a>
+        <a href="/home" className="wishListName">WishList</a>
         <ul>
             <li><a href="/viewWishListItems">View Wishlists</a></li>
             <li><a href="/createalist">Create a Wish List</a></li>

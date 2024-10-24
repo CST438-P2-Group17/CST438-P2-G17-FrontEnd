@@ -6,7 +6,7 @@ body{
 }
 
 .nav{
-    background-color: #333;
+    background-color: #090907;
     color: white;
     display:flex;
     justify-content: space-between;
@@ -52,7 +52,7 @@ nav li.active{
 
 .auth-btns .loginBtn,
 .auth-btns .signupBtn {
-    background-color: #333;
+    background-color: #3f405d;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
