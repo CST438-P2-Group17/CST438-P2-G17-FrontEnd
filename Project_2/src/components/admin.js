@@ -52,6 +52,7 @@ export default function AdminFeatures() {
     setError(null)
 
     try {
+      // const response = await fetch('https://cst438p2g17s-cors-fnuajnq4udmr.herokuapp.com/createUser', {
       const response = await fetch('https://cst438p2g17spring-65b77ceaeba8.herokuapp.com/createUser', {
         method: 'PUT',
         headers: {
@@ -69,8 +70,8 @@ export default function AdminFeatures() {
         throw new Error('Failed to create user')
       }
 
-      const newUser = await response.json()
-      setUsers([...users, newUser])
+      // const newUser = await response.json();
+      // setUsers([...users, newUser.parse()])
       setNewUserEmail('')
       setNewUserName('')
       alert('User created successfully!')
@@ -132,7 +133,7 @@ export default function AdminFeatures() {
 
     try {
       const response = await fetch('https://cst438p2g17spring-65b77ceaeba8.herokuapp.com/updateUser', {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -151,7 +152,7 @@ export default function AdminFeatures() {
         throw new Error('Failed to update user')
       }
 
-      const updatedUser = await response.json()
+      const updatedUser = await response;
       setUsers(users.map(user => user.user_id === updatedUser.user_id ? updatedUser : user))
       setUpdateUserId('')
       setUpdateUserEmail('')

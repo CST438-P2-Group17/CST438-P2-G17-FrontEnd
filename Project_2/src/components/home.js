@@ -17,7 +17,7 @@ function Home( {userData} ) {
             <div className="banner">
                 <h2>The Better Wish List</h2>
                 <p>Add gifts from any website</p>
-                <Link to="/login" className='get-started-btn'>Get Started</Link>
+                <Link to="/createalist" className='get-started-btn'>Get Started</Link>
                 
             </div>
          {/*  <div className="logout-section">
