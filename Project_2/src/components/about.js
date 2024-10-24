@@ -7,19 +7,19 @@ function About() {
                 <h2>Developers</h2>
                 <div className="developers-list">
                     <div className="developer">
-                        <img src="https://via.placeholder.com/100" alt="Developer" className="developer-avatar" />
+                        <img src="judah.png" alt="Developer" className="developer-avatar" />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
                     </div>
                     <div className="developer">
-                        <img src="https://via.placeholder.com/100" alt="Developer" className="developer-avatar" />
+                        <img src="alex.png" alt="Developer" className="developer-avatar" />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
                     </div>
                     <div className="developer">
-                        <img src="https://via.placeholder.com/100" alt="Developer" className="developer-avatar" />
+                        <img src="kevin.gif" alt="Developer" className="developer-avatar" />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
                     </div>
                     <div className="developer">
-                        <img src="https://via.placeholder.com/100" alt="Developer" className="developer-avatar" />
+                        <img src="sergio.jpg" alt="Developer" className="developer-avatar" />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ function About() {
 
             <div className="about-section">
                 <h2>About WishList</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                <p>Welcome to Wishlist, the ultimate platform to create and manage your personal wishlist! Whether you're planning for a special event, keeping track of your favorite items, or saving for a big purchase, Wishlist makes it easy to add products from any store in one convenient place. Organize your lists, share them with friends and family, and get notified when items go on sale. Start building your perfect wishlist today with Wishlist!</p>
             </div>
         </div>
     );
