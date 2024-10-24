@@ -1,6 +1,6 @@
 
 import GiftCard from './giftcards';
-import React  from 'react';
+import React , {useState, useEffect} from 'react';
 
 
 const giftCardData = [
@@ -108,10 +108,38 @@ const giftCardData = [
 ];
 
 
-const GiftCardList = ({ wishlistId }) => {
-    const handleAddToList = async (giftCardName) => {
-        console.log(`${giftCardName} added to the wishlist with ID: ${wishlistId}.`);
 
+const GiftCardList = () => {
+    const [wishlists, setWishlists] = useState([]);
+    const [userId, setUserId] = useState(''); 
+    const [selectedWishlistId, setSelectedWishlistId] = useState(''); 
+
+    const fetchWishlists = async () => {
+        if (!userId) {
+            alert('Please enter a user ID');
+            return;
+        }
+
+        try {
+            const response = await fetch(`https://cst438p2g17spring-65b77ceaeba8.herokuapp.com/userWishlists?user_id=${userId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch wishlists');
+            }
+            const data = await response.json();
+            setWishlists(data); // Update the wishlists state with the data
+        } catch (error) {
+            console.error(error);
+            alert('Error fetching wishlists');
+        }
+    };
+
+    const handleAddToList = async (giftCard) => {
+        if (!selectedWishlistId) {
+            alert('Please select a wishlist first.');
+            return;
+        }
+
+        // Send gift card details to the server to add it to the selected wishlist
         try {
             const response = await fetch(`https://cst438p2g17spring-65b77ceaeba8.herokuapp.com/addWishlistedItem`, {
                 method: 'POST',
@@ -120,36 +148,57 @@ const GiftCardList = ({ wishlistId }) => {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    wishlistId: parseInt(wishlistId),
-                    name: encodeURIComponent(giftCardName),
-                    price: 0,  // Price for gift cards could be dynamic or set to 0
-                    seller: encodeURIComponent('Gift Card Seller'),
-                    image_url: encodeURIComponent(`/images/${giftCardName}.png`)  // Assuming image paths follow a pattern
+                    wishlistId: parseInt(selectedWishlistId),
+                    url: '', // No URL for gift cards, can be left empty or use a placeholder
+                    name: encodeURIComponent(giftCard.name),
+                    price: 0, // Assuming gift cards don't have a set price
+                    seller: 'Gift Card Seller',
+                    image_url: encodeURIComponent(giftCard.image)
                 })
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
+                throw new Error('Failed to add gift card to wishlist');
             }
 
             const data = await response.json();
-            console.log('Gift card added to wishlist successfully:', data);
+            alert(`Gift card "${giftCard.name}" added to wishlist ID: ${selectedWishlistId}`);
         } catch (error) {
-            console.error('Error adding gift card to wishlist:', error);
+            console.error('Error:', error);
+            alert('An error occurred while adding the gift card to the wishlist.');
         }
     };
 
     return (
-        <div className="gift-card-list">
-            {giftCardData.map((giftCard, index) => (
-                <GiftCard
-                    key={index}
-                    image={giftCard.image}
-                    name={giftCard.name}
-                    description={giftCard.description}
-                    onAddToList={() => handleAddToList(giftCard.name)}
-                />
-            ))}
+        <div>
+            <input
+                type="number"
+                value={userId} 
+                onChange={(e) => setUserId(e.target.value)} 
+                placeholder="Enter user ID"
+            />
+            <button onClick={fetchWishlists}>Fetch Wishlists</button>
+
+            <select value={selectedWishlistId} onChange={(e) => setSelectedWishlistId(e.target.value)}>
+                <option value="">Select a wishlist</option>
+                {wishlists.map((wishlist) => (
+                    <option key={wishlist.wishlist_id} value={wishlist.wishlist_id}>
+                        {wishlist.name}
+                    </option>
+                ))}
+            </select>
+
+            <div className="gift-card-list">
+                {giftCardData.map((giftCard, index) => (
+                    <GiftCard
+                        key={index}
+                        image={giftCard.image}
+                        name={giftCard.name}
+                        description={giftCard.description}
+                        onAddToList={() => handleAddToList(giftCard)}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const GiftCard = ({ image, name, description, onAddToList }) => {
     return (
         <div className="gift-card">
@@ -8,7 +7,7 @@ const GiftCard = ({ image, name, description, onAddToList }) => {
             <h3 className="gift-card-name">{name}</h3>
             <p className="gift-card-description">{description}</p>
             <button className="add-to-list-btn" onClick={onAddToList}>
-                Add to List
+                Add to Wishlist
             </button>
         </div>
     );
