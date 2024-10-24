@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { useState } from 'react'
 
 // function WishlistManager() {
@@ -522,6 +523,10 @@
 
 // export default WishlistManager
 import React, { useState } from 'react'
+=======
+import React, { useState } from 'react';
+
+>>>>>>> 8f6e09c130f7b9f6f21682a1a6b46b24546d6575
 
 function WishlistManager() {
   const [wishListName, setWishListName] = useState('')
