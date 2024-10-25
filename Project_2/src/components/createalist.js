@@ -547,6 +547,15 @@ function WishlistManager() {
   const [deleteItemError, setDeleteItemError] = useState('')
   const [showDeleteItemModal, setShowDeleteItemModal] = useState(false)
 
+  const [editItemId, setEditItemId] = useState('')
+  const [editItemUrl, setEditItemUrl] = useState('')
+  const [editItemName, setEditItemName] = useState('')
+  const [editItemPrice, setEditItemPrice] = useState('')
+  const [editItemSeller, setEditItemSeller] = useState('')
+  const [editItemImageUrl, setEditItemImageUrl] = useState('')
+  const [editItemError, setEditItemError] = useState('')
+  const [showEditItemModal, setShowEditItemModal] = useState(false)
+
   const handleCreateWishlist = async (e) => {
     e.preventDefault()
     setError('')
@@ -680,6 +689,47 @@ function WishlistManager() {
     }
   }
 
+  const handleEditItem = async (e) => {
+    e.preventDefault()
+    setEditItemError('')
+
+    const params = new URLSearchParams()
+    params.append('item_id', editItemId)
+    if (editItemUrl) params.append('url', editItemUrl)
+    if (editItemName) params.append('name', editItemName)
+    if (editItemPrice) params.append('price', editItemPrice)
+    if (editItemSeller) params.append('seller', editItemSeller)
+    if (editItemImageUrl) params.append('image_url', editItemImageUrl)
+
+    try {
+      const response = await fetch(`https://cst438p2g17spring-65b77ceaeba8.herokuapp.com/editItem?${params.toString()}`, {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+      }
+
+      const data = await response.json();
+      console.log('Item edited successfully:', data);
+
+      setShowEditItemModal(true);
+      setEditItemId('');
+      setEditItemUrl('');
+      setEditItemName('');
+      setEditItemPrice('');
+      setEditItemSeller('');
+      setEditItemImageUrl('');
+
+    } catch (error) {
+      console.error('Error:', error);
+      setEditItemError(error.message || 'An error occurred while editing the item.');
+    }
+  }
+
   const closeModal = () => {
     setShowModal(false)
   }
@@ -694,6 +744,10 @@ function WishlistManager() {
 
   const closeDeleteItemModal = () => {
     setShowDeleteItemModal(false)
+  }
+
+  const closeEditItemModal = () => {
+    setShowEditItemModal(false)
   }
 
   return (
@@ -881,6 +935,85 @@ function WishlistManager() {
                 </div>
               )}
             </div>
+
+            <div className="bg-gray-600 p-4 rounded-lg">
+              <h2 className="text-xl font-semibold text-gray-100 mb-4">Edit Item</h2>
+              <form onSubmit={handleEditItem} className="space-y-4">
+                <div>
+                  <label htmlFor="editItemId" className="block text-sm font-medium text-gray-300">Item ID</label>
+                  <input
+                    type="number"
+                    id="editItemId"
+                    value={editItemId}
+                    onChange={(e) => setEditItemId(e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="editItemUrl" className="block text-sm font-medium text-gray-300">New Item URL (optional)</label>
+                  <input
+                    type="url"
+                    id="editItemUrl"
+                    value={editItemUrl}
+                    onChange={(e) => setEditItemUrl(e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="editItemName" className="block text-sm font-medium text-gray-300">New Item Name (optional)</label>
+                  <input
+                    type="text"
+                    id="editItemName"
+                    value={editItemName}
+                    onChange={(e) => setEditItemName(e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="editItemPrice" className="block text-sm font-medium text-gray-300">New Item Price (optional)</label>
+                  <input
+                    type="number"
+                    id="editItemPrice"
+                    value={editItemPrice}
+                    onChange={(e) => setEditItemPrice(e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    step="0.01"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="editItemSeller" className="block text-sm font-medium text-gray-300">New Seller (optional)</label>
+                  <input
+                    type="text"
+                    id="editItemSeller"
+                    value={editItemSeller}
+                    onChange={(e) => setEditItemSeller(e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="editItemImageUrl" className="block text-sm font-medium text-gray-300">New Image URL (optional)</label>
+                  <input
+                    type="url"
+                    id="editItemImageUrl"
+                    value={editItemImageUrl}
+                    onChange={(e) => setEditItemImageUrl(e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                >
+                  Edit Item
+                </button>
+              </form>
+              {editItemError && (
+                <div className="mt-4 p-2 bg-red-100 border border-red-400 text-red-700 rounded">
+                  {editItemError}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -1037,6 +1170,46 @@ function WishlistManager() {
                   id="ok-btn"
                   className="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
                   onClick={closeDeleteItemModal}
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showEditItemModal && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="edit-item-modal">
+          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div className="mt-3 text-center">
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                <svg
+                  className="h-6 w-6 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-lg leading-6 font-medium text-gray-900 mt-2">Item Edited Successfully!</h3>
+              <div className="mt-2 px-7 py-3">
+                <p className="text-sm text-gray-500">
+                  The item has been updated.
+                </p>
+              </div>
+              <div className="items-center px-4 py-3">
+                <button
+                  id="ok-btn"
+                  className="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+                  onClick={closeEditItemModal}
                 >
                   OK
                 </button>
